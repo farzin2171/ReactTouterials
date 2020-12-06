@@ -6,6 +6,8 @@ import {projectAdded} from './store/projects'
 import {userAdded} from './store/users'
 import * as actions from './store/api'
 import {loadBugs,addBug} from './store/bugs'
+import Bugs from './components/Bugs'
+import StoreContext from './contexts/storeContext'
 
 
 function App() {
@@ -26,16 +28,18 @@ function App() {
   //   //If the promise is rejected =>dispatch
 
   // });
-  store.dispatch(loadBugs());
-  store.dispatch(addBug({
-    description:"bug added"
-  }))
+  // store.dispatch(loadBugs());
+  // store.dispatch(addBug({
+  //   description:"bug added"
+  // }))
   
   
-  console.log(store.getState())
+  // console.log(store.getState())
   return (
     <div className="App">
-      
+        <StoreContext.Provider value={store}>
+         <Bugs />
+       </StoreContext.Provider>
     </div>
   );
 }
